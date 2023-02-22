@@ -7,42 +7,42 @@ public class StackFixedDynamic {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the size for fixed: ");
 		int sizef = sc.nextInt();
-        Fixed f = new Fixed(sizef);
-        System.out.println("Enter the size for Dynamic: ");
-        int sized = sc.nextInt();
-        Dynamic d = new Dynamic(sized);
-        System.out.println("Enter the no. to enter into the Fixed stack (" + sizef +"): ");
+		Fixed f = new Fixed(sizef);
+		System.out.println("Enter the size for Dynamic: ");
+		int sized = sc.nextInt();
+		Dynamic d = new Dynamic(sized);
+		System.out.println("Enter the no. to enter into the Fixed stack (" + sizef +"): ");
 
-        for (int i = 0; i < sizef; i++) {
-        	System.out.print("ENTER: ");
-        	int n = sc.nextInt();
-            f.push(n);
-            System.out.println();
-        }
-        System.out.println("item in peek: " + f.peek());
-        System.out.println();
-        System.out.println("Elements in fixed stack:");
-        for (int i = 0; i < sizef; i++) {
-            System.out.println("Item deleted" + f.pop());
-        }
+		for (int i = 0; i < sizef; i++) {
+			System.out.print("ENTER: ");
+			int n = sc.nextInt();
+		    f.push(n);
+		    System.out.println();
+		}
+		System.out.println("item in peek: " + f.peek());
+		System.out.println();
+		System.out.println("Elements in fixed stack:");
+		for (int i = 0; i < sizef; i++) {
+		    System.out.println("Item deleted" + f.pop());
+		}
 
-        System.out.println();
-        System.out.println("Enter the no. to enter into the Dynbamic stack (" + sized +"): ");
-        for (int i = 0; i < 10; i++) {
-        	System.out.print("ENTER: ");
-        	int n = sc.nextInt();
-            d.push(n);
-            System.out.println();
-        }
-        System.out.println("item in peek: " + d.peek());
-        int length = d.count();
-        System.out.println(length);
-        System.out.println("Elements in dynamic stack:");
-        for (int i = 0; i < length; i++) {
-            System.out.println("Item deleted "+d.pop());
-        }
-        sc.close();
-    }
+		System.out.println();
+		System.out.println("Enter the no. to enter into the Dynbamic stack (" + sized +"): ");
+		for (int i = 0; i < 10; i++) {
+			System.out.print("ENTER: ");
+			int n = sc.nextInt();
+		    d.push(n);
+		    System.out.println();
+		}
+		System.out.println("item in peek: " + d.peek());
+		int length = d.count();
+		System.out.println(length);
+		System.out.println("Elements in dynamic stack:");
+		for (int i = 0; i < length; i++) {
+		    System.out.println("Item deleted "+d.pop());
+		}
+		sc.close();
+	 }
 }
 
 interface Stack {
