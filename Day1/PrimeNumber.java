@@ -6,22 +6,22 @@ public class PrimeNumber {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the nth value: ");
-		int n = sc.nextInt();
-		Prime p = new Prime(n);
-		p.finishprime();
+		int number1 = sc.nextInt();
+		Prime prime = new Prime(number);
+		prime.finishprime();
 		System.out.println();
 		System.out.println("Enter the value to check Armstrong number or Perfect number or Palindrome or none of these");
-		int number = sc.nextInt();
-		ThreeInOne t = new ThreeInOne(number);
+		int number2 = sc.nextInt();
+		ThreeInOne t = new ThreeInOne(number2);
 		t.finishall();
 		sc.close();
 	}
 }
 
 class Prime{
-	public Prime(int n) {
-		System.out.println("prime number b/w 1 to " + n + "are: ");
-		for(int i=2; i<=n; i++) {
+	public Prime(int number) {
+		System.out.println("prime number b/w 1 to " + number + "are: ");
+		for(int i=2; i<=number; i++) {
 			int count = 0;
 			for(int j=2; j<=i/2; j++) {
 				if(i%j == 0) {
@@ -40,8 +40,8 @@ class Prime{
 }
 
 class ThreeInOne{
-	public ThreeInOne(int n) {
-		armstrong(n);
+	public ThreeInOne(int number) {
+		armstrong(number);
 	}
 	
 	public static void armstrong(int n) {
