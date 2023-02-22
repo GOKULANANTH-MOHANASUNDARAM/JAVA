@@ -7,6 +7,8 @@ public class Singleton {
 		s2 = Single.getInstance();
 		s1.checkStatus();
 		s2.checkStatus();
+		System.out.println("\n" + s1.hashCode());
+		System.out.println(s2.hashCode());
 	}
 }
 
