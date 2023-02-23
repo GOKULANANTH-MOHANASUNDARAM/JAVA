@@ -45,11 +45,11 @@ class Result extends Exam{
 	
 	public void getTotal() {
 		total = maths + physics + chemistry;
-		avg = average(total);
+		avg = getAverage(total);
 		System.out.println("Total marks of " + name + "(" + regno + "):" + total);
 		System.out.println("His average is: " + avg);
 	}
-	public float average(int total) {
+	public float getAverage(int total) {
 		avg = total/3;
 		return avg;
 	}
