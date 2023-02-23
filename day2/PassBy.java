@@ -1,8 +1,8 @@
 package day2;
 
-public class Passby_value_and_reference {
+public class PassbyValueAndReference {
 	public static void main(String[] args) {
-		Pass_by_value a = new Pass_by_value();
+		PassByValue a = new PassByValue();
 		System.out.print("Befor passing the value: " + 5);
 		a.pass(5);
 		int[] array = new int[] {10, 20, 30};
@@ -10,19 +10,19 @@ public class Passby_value_and_reference {
 		for(int i=0; i<array.length; i++) {
 			System.out.print(array[i]+" ");
 		}
-		Pass_by_reference b = new Pass_by_reference();
+		PassByReference b = new PassByReference();
 		b.pass(array);
 	}
 }
 
-class Pass_by_value {
+class PassByValue {
 	public void pass(int a) {
 		System.out.print(a + " - pass by value");
 		System.out.print("After passing the value" + a++);
 	}
 }
 
-class Pass_by_reference extends Pass_by_value {
+class PassByReference extends PassByValue {
 	public void pass(int[] array) {
 		System.out.print("\n"+ array[0] + " - pass by reference");
 		for(int i=0; i<array.length; i++) {
