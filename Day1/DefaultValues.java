@@ -1,6 +1,6 @@
 package day1;
 
-public class DefaultValuesDataTypes {
+public class DefaultValues {
 	static byte BYTE;
 	static short SHORT;
 	static int INT;
