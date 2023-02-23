@@ -41,11 +41,14 @@ class Prime{
 
 class ThreeInOne{
 	public ThreeInOne(int number) {
-		armstrong(number);
+		checkArmstrong(number);
+		checkPerfectNumber(number);
+		checkPalindrome(number);
+		checkNone(number);
 	}
 	
-	public static void armstrong(int n) {
-		int copy = n, remainder = 0, number = 0;
+	public static void checkArmstrong(int n) {
+		int copy = n, remainder = 0, number = 0, flag = 0;
 		while(copy != 0) {
 			remainder = copy%10;
 			number += Math.pow(remainder, 3);
@@ -56,12 +59,12 @@ class ThreeInOne{
 		}
 		else {
 			System.out.println(n + " is not an armstrong number");
+			flag = 1;
 		}
-		perfectNumber(n);
 	}
 	
-	public static void perfectNumber(int n){
-		int copy = n, sum = 0;
+	public static void checkPerfectNumber(int n){
+		int copy = n, sum = 0, flag = 1;
 		for(int i=1; i<=copy/2; i++) {
 			if(copy%i==0) {
 				sum+=i;
@@ -72,12 +75,12 @@ class ThreeInOne{
 		}
 		else {
 			System.out.println(n + " is not a perfect number");
+			flag = 1;
 		}
-		palindrome(n);
 	}
 	
-	public static void palindrome(int n) {
-		int copy=n, reverse = 0, remainder = 0;
+	public static void checkPalindrome(int n) {
+		int copy=n, reverse = 0, remainder = 0, flag = 0;
 		while(copy!=0) {
 			remainder = copy%10;
 			reverse = remainder+(reverse * 10);
@@ -88,6 +91,23 @@ class ThreeInOne{
 		}
 		else {
 			System.out.println(n + " is not a palindrome");
+			flag=1;
+		}
+	}
+	
+	public static void checkNone(int number){
+		int flag1, flag2, flag3;
+		static void referArmstrong(int flag1){
+			this.flag1 = flag1;
+		}
+		static void referPerfectNumber(int flag2){
+			this.flag2 = flag2;
+		}
+		static void referPalindrome(int flag3){
+			this.flag3 = flag3;
+		}
+		if(flag1 == 0 && flag2 == 0 && flag3 == 0){
+			System.out.print("None of These");
 		}
 	}
 	
