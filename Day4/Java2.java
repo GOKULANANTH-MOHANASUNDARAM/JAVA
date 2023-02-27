@@ -4,14 +4,14 @@ import java.io.*;
 
 public class Java2 {
 	public static void main(String[] p) {
-		Java2 s = new Java2();
-		s.mth1();
+		Java2 reference = new Java2();
+		reference.callThrowException();
 	}
-	public void mth1() {
-		mth2();
+	public void callThrowException() {
+		throwException();
 		System.out.println("Caller");
 	}
-	public void mth2() {
+	public void throwException() {
 		try {
 			throw new IOException("Error Occured");
 			return;
