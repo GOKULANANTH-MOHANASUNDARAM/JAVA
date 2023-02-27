@@ -6,32 +6,22 @@ public class Java7 {
 
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		char numerator, denominator;
-		Exit exit = new Exit();
-		Division division = new Division();
 		while(true) {
 				System.out.println("Enter numerator: ");
-				numerator = sc.next().charAt(0);
-				exit.checkCharacter(numerator);
+				numerator = scanner.next().charAt(0);
+				if(ch == 'q'||ch == 'Q'){
+					System.exit(0);
+				}
 				System.out.println("Enter denominator: ");
-				denominator = sc.next().charAt(0);
-				division.divide(numerator-'0', denominator-'0');
+				denominator = scanner.next().charAt(0);
+				divide(Integer.parseInt(numerator), Integer.parseInt(denominator));
 		}
 			
 	}
-
-}
-
-class Exit{
-	void checkCharacter(char ch) {
-		if(ch == 'q'||ch == 'Q')
-			System.exit(0);
-	}
-}
-
-class Division{
-	void divide(int numerator, int denominator) {
+	
+	static void divide(int numerator, int denominator) {
 		float result;
 		try {
 			result = (float) numerator/denominator;
@@ -42,4 +32,5 @@ class Division{
 		}
 		
 	}
+
 }
