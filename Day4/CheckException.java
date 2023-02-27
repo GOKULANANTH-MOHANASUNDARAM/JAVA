@@ -15,13 +15,14 @@ class Base {
 }
 
 class Derived extends Base {
-	public Derived(){
+	public Derived() {
 		try {
 			super();
 		}
 		catch(Exception e) {
-			System.out.println("Exception thrown by Base class got caught in Derived class: "+ e.getMessage());
-		} finally {
+			System.out.println("Exception thrown by Base class got caught in Derived class: " + e.getMessage());
+		} 
+		finally {
 			System.out.println("Finally done");
 
 		}
