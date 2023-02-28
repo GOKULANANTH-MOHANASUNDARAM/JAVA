@@ -9,6 +9,9 @@ public class ThreadCount {
 		es.execute(()->{
 			PrintThread.toPrint();
 		});
+		es.execute(()->{
+			PrintThread.toPrint();
+		});
 		es.shutdown();
 	}
 }
@@ -17,12 +20,16 @@ class PrintThread{
 	public static void toPrint() {
 		for(int i=1; i<=100; i++) {
 			System.out.println(i);
-			if(i%10==0) {
-				System.out.println("Hi I am Printer");
-			}
+			printon10(i);
 			try {
 				Thread.sleep(1000);
 			} catch (Exception e) {}    	
+		}
+	}
+	
+	public static void printon10(int i) {
+		if(i%10==0) {
+			System.out.println("Hi I am Printer");
 		}
 	}
 }
