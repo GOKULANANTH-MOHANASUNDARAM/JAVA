@@ -73,7 +73,7 @@ class Customer{
         String str=sc.next();
         try {
             CarShowRoom shop = (CarShowRoom)Class.forName(str).getConstructor().newInstance();
-            System.out.println(shop.sellcar1(this));
+            System.out.println(shop.sellcar(this));
         }
         catch(Exception e)
         {
