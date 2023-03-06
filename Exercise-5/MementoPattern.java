@@ -1,56 +1,72 @@
 package exercise5;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-class Memento {
-    private String name;
-    private int age;
-    public Memento(String name, int age){
-        this.name = name;
-        this.age = age;
+// memento
+class TextEditorMemento {
+    private String text;
+    
+    public TextEditorMemento(String text) {
+        this.text = text;
     }
-    public String getName() {
-        return name;
-    }
-    public int getAge() {
-        return age;
-    }
-}
-class User {
-    private String name;
-    private int age;
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
-        System.out.println(String.format("create: name = %s, age = %s", name, age));
-    }
-    public Memento save(){
-        System.out.println(String.format("save: name = %s, age = %s", name, age));
-        return new Memento(name, age);
-    }
-    public void restore(Memento memento){
-        name = memento.getName();
-        age = memento.getAge();
-        System.out.println(String.format("restore: name = %s, age = %s", name, age));
-    }
-}
-class SaveUser {
-    private List<Memento> list = new ArrayList<Memento>();
-    public void add(Memento memento){
-        list.add(memento);
-    }
-    public Memento get(int ind){
-        return list.get(ind);
+    
+    public String getText() {
+        return text;
     }
 }
 
-public class MementoPattern { // Test
+// Originator
+class TextEditor {
+    private String text;
+    
+    public TextEditor(String text) {
+        this.text = text;
+    }
+    
+    public void setText(String text) {
+        this.text = text;
+    }
+    
+    public TextEditorMemento save() {
+        return new TextEditorMemento(text);
+    }
+    
+    public void restore(TextEditorMemento memento) {
+        text = memento.getText();
+    }
+    
+    public String getText() {
+        return text;
+    }
+}
+
+// caretaker
+class TextEditorHistory {
+    private List<TextEditorMemento> history = new ArrayList<>();
+    
+    public void save(TextEditorMemento memento) {
+        history.add(memento);
+    }
+    
+    public TextEditorMemento getLastSavedState() {
+        if (history.size() > 0) {
+            return history.remove(history.size() - 1);
+        } else {
+            return null;
+        }
+    }
+}
+
+public class MementoPattern {
     public static void main(String[] args) {
-        SaveUser saveUser = new SaveUser();
-        User user1 = new User("Peter", 17);
-        //User user2 = new User("Ian", 19);
-        saveUser.add(user1.save());
-        user1.restore(saveUser.get(0));
+
+        TextEditor editor = new TextEditor("Hi, This is Gokul");
+        TextEditorHistory history = new TextEditorHistory();
+        editor.setText("I am working in Sirius Computer Solutions");
+        history.save(editor.save());
+        editor.setText("Currently staying in Chennai");
+        history.save(editor.save());
+        editor.restore(history.getLastSavedState());
+        System.out.println(editor.getText()); 
     }
 }
