@@ -1,53 +1,51 @@
 package exercise5;
 
 import java.util.HashMap;
+import java.util.Map;
 
-interface Bird {
-	   void draw();
+interface Tree {
+    void display(int x, int y);
 }
 
-class AngryBird implements Bird {
-    private String color;
+class PineTree implements Tree {
+    private final String color;
+    private final String texture;
 
-
-    public AngryBird(String color){
-       this.color = color;       
+    public PineTree(String color, String texture) {
+        this.color = color;
+        this.texture = texture;
+        System.out.println("Creating PineTree with color " + color + " and texture " + texture);
     }
 
     @Override
-    public void draw() {
-       System.out.println("Angry Bird: Draw() [Color : " + color);
+    public void display(int x, int y) {
+        System.out.println("Displaying PineTree at position (" + x + ", " + y + ") with color " + color + " and texture " + texture);
     }
- }
-
-class BirdFactory {
- 
-	private static final HashMap angrybirdMap = new HashMap();
- 
-    public static Bird getAngryBird(String color) {
-    	AngryBird angrybird = (AngryBird)angrybirdMap.get(color);
- 
-        if(angrybird == null) {
-        	angrybird = new AngryBird(color);
-            angrybirdMap.put(color, angrybird);
-            System.out.println("Creating Angry Bird of color : " + color);
-          }
-          return angrybird;
-      }
- }
-
-public class FlyweightPattern {
-	private static final String colors[] = { "Red", "Orange", "Blue", "Yellow", "Pink" };
-	
-	public static void main(String[] args) {
-	 
-		for(int i=0; i < 20; ++i) {
-			AngryBird angrybird = (AngryBird)BirdFactory.getAngryBird(getRandomColor());
-	              
-			angrybird.draw();
-		}
-	}
-	private static String getRandomColor() {
-		return colors[(int)(Math.random()*colors.length)];
-	}
 }
+
+class TreeFactory {
+    private static Map<String, Tree> treePool = new HashMap<>();
+
+    public static Tree getTree(String color, String texture) {
+        String key = color + texture;
+        if (!treePool.containsKey(key)) {
+            treePool.put(key, new PineTree(color, texture));
+        }
+        return treePool.get(key);
+    }
+
+    public static int getTreeCount() {
+        return treePool.size();
+    }
+}
+
+class FlyweightPattern {
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++) {
+            Tree tree = TreeFactory.getTree("green", "pine");
+            tree.display(i * 10, i * 10);
+        }
+        System.out.println("Total number of trees: " + TreeFactory.getTreeCount());
+    }
+}
+
