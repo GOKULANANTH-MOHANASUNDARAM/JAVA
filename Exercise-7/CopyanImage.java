@@ -17,6 +17,17 @@ public class CopyanImage {
 				System.out.println("Image copy done");
 			}catch(Exception e) {
 				e.printStackTrace();	
+			} finally {
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
+			if (out != null) {
+				out.close();
+			}
+		}
 	}
 }
