@@ -8,36 +8,33 @@ import java.io.PrintWriter;
 
 public class CopyFile {
 	public static void main(String[] args) {
-		BufferedReader inputStream = null;
-		PrintWriter outputStream = null;
+		BufferedReader reader = null;
+		PrintWriter writer = null;
 
 		try {
-			inputStream = new BufferedReader(new FileReader("/Users/gokulananth/eclipse-workspace/Java-Excercise/src/exercise7/input.txt"));
-			outputStream = new PrintWriter(new FileWriter("/Users/gokulananth/eclipse-workspace/Java-Excercise/src/exercise7/output.txt"));
+			reader = new BufferedReader(new FileReader("/Users/gokulananth/eclipse-workspace/Java-Excercise/src/exercise7/input.txt"));
+			writer = new PrintWriter(new FileWriter("/Users/gokulananth/eclipse-workspace/Java-Excercise/src/exercise7/output.txt"));
 
 			String l;
 			try {
-				while ((l = inputStream.readLine()) != null) {
-					outputStream.println(l);
+				while ((l = reader.readLine()) != null) {
+					writer.println(l);
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} finally {
-			if (inputStream != null) {
+			if (reader != null) {
 				try {
-					inputStream.close();
+					reader.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-			if (outputStream != null) {
-				outputStream.close();
+			if (writer != null) {
+				writer.close();
 			}
 		}
 	}
