@@ -1,0 +1,2 @@
+This is the JAVA program to run the file copy program.
+from source.txt to destination.txt
