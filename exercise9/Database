@@ -1,0 +1,60 @@
+create table users
+
+create table users (uid int(5),uname varchar(40),upass varchar(8),age int(5),flag int(1));
+
+insert values into users
+
+insert into users values (1,'ramu','secret',20,0);
+insert into users values (2,'somu','secret',30,0);
+
+
+
+
+
+create table customermaster
+
+create table customermaster ( customerid varchar(30), customername varchar(30), customeraddress varchar(40), primary key(customerid));
+
+Insert values into customermaster
+
+insert into customermaster values('c2','raju','err');
+
+
+
+
+
+create table itemmaster
+
+create table itemmaster ( itemno int, itemname varchar(30), itemprice int,itemunit int, primary key(itemno));
+
+insert values into itemmaster
+
+insert into itemmaster values(1,'dhal',200,'kg');
+
+
+
+
+
+create table invoicemaster
+
+create table invoicemaster ( invoiceno varchar(30), date date,customerid varchar(30), primary key(invoiceno), foreign key (customerid) references customermaster(customerid));
+
+insert values to invoicemaster
+
+insert into invoicemaster values('i1','2023-11-12','c2');
+
+
+
+
+
+create table invoicetrans
+
+create table invoicetrans (itemno int, invoiceno varchar(30), itemqty int, primary key(itemno,invoiceno), 
+foreign key (invoiceno) references invoicemaster(invoiceno), foreign key (itemno) references itemmaster(itemno));
+
+insert values to invoicetrans
+
+insert into invoicetrans values(1,'i1',200);
+
+
+
