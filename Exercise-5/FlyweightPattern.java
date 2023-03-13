@@ -2,6 +2,7 @@ package exercise5;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  * Defines the method signature for displaying a tree at a given position.
@@ -59,8 +60,10 @@ class TreeFactory {
  */
 class FlyweightPattern {
     public static void main(String[] args) {
+    	Scanner sc = new Scanner(System.in);
+    	System.out.println("Enter color + space + texture");
         for (int i = 0; i < 10; i++) {
-            Tree tree = TreeFactory.getTree("green", "pine");
+            Tree tree = TreeFactory.getTree(sc.next(), sc.next());
             tree.display(i * 10, i * 10);
         }
         System.out.println("Total number of trees: " + TreeFactory.getTreeCount());
